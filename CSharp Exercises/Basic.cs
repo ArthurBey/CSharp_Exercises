@@ -67,6 +67,8 @@ public class BasicExercises
 
     /**
      * Create a new string where the first 4 characters will be in lower case. Upper case if string < 4 chars.
+     * 
+     * Substring method
     **/
     public static void Basic42()
     {
@@ -83,7 +85,35 @@ public class BasicExercises
             Console.WriteLine(str.Substring(0, 4).ToLower() + str.Substring(4, str.Length -4));
         }
 
+    }
 
+    /**
+     * Create a new string of every other character (odd index) from the first position of a given string
+     * 
+     * MAIN TAKEAWAY:
+     * - Checking if a number
+     * 
+    **/
+    public static void Basic43()
+    {
+        Console.WriteLine("Input a string: ");
+        string str = Console.ReadLine();
+
+        /** initializing it with an empty string
+         * done as a starting point when you intend to build or concatenate strings in a loop or over multiple operations. 
+         */
+        var result = string.Empty; 
+        
+        for (var i = 0; i < str.Length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                result += str.Substring(i, 1);
+            }
+        }
+
+        Console.WriteLine(result);
+        
     }
 
 }
