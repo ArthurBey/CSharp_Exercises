@@ -45,8 +45,8 @@ public class BasicExercises
         int comparisonX = Math.Abs(x - REFERENCE_VALUE); // ABS(2 - 20) = 18 
         int comparisonY = Math.Abs(y - REFERENCE_VALUE); // ABS(18 - 20) = 2
 
-        Console.WriteLine("Closest to " + REFERENCE_VALUE + " is :"); 
-        Console.WriteLine(comparisonX == comparisonY ? 0 : comparisonX > comparisonY ? y : x); 
+        Console.WriteLine("Closest to " + REFERENCE_VALUE + " is :");
+        Console.WriteLine(comparisonX == comparisonY ? 0 : comparisonX > comparisonY ? y : x);
     }
 
     /**
@@ -82,7 +82,7 @@ public class BasicExercises
         }
         else
         {
-            Console.WriteLine(str.Substring(0, 4).ToLower() + str.Substring(4, str.Length -4));
+            Console.WriteLine(str.Substring(0, 4).ToLower() + str.Substring(4, str.Length - 4));
         }
 
     }
@@ -91,10 +91,10 @@ public class BasicExercises
      * Create a new string of every other character (odd index) from the first position of a given string
      * 
      * MAIN TAKEAWAY:
-     * - Checking if a number
-     * 
+     * - Checking for odd number with statement"i % 2 == 0"
+     * - you can initialize a string to "" with string.Empty
     **/
-    public static void Basic43()
+    public static void Basic44()
     {
         Console.WriteLine("Input a string: ");
         string str = Console.ReadLine();
@@ -102,8 +102,8 @@ public class BasicExercises
         /** initializing it with an empty string
          * done as a starting point when you intend to build or concatenate strings in a loop or over multiple operations. 
          */
-        var result = string.Empty; 
-        
+        var result = string.Empty;
+
         for (var i = 0; i < str.Length; i++)
         {
             if (i % 2 == 0)
@@ -113,7 +113,34 @@ public class BasicExercises
         }
 
         Console.WriteLine(result);
-        
+
+    }
+
+    /**
+     * Count a specified number in a given array of integers
+     * 
+     * MAIN TAKEAWAY:
+     * 
+    **/
+    public static void Basic45()
+    {
+        Console.WriteLine("\nInput an integer:");
+        int x = Convert.ToInt32(Console.ReadLine());
+        int[] nums = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 9 };
+
+        Console.WriteLine("Number of \'" + x + "\' present in the array: ");
+        Console.WriteLine(nums.Count(n => n == x));
+    }
+
+    /**
+     * 
+     * 
+     * MAIN TAKEAWAY:
+     * 
+    **/
+    public static void BasicXX()
+    {
+
     }
 
 }
