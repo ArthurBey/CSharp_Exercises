@@ -120,6 +120,7 @@ public class BasicExercises
      * Count a specified number in a given array of integers
      * 
      * MAIN TAKEAWAY:
+     * Another lambda expression with method Count but this time on an array 
      * 
     **/
     public static void Basic45()
@@ -130,6 +131,27 @@ public class BasicExercises
 
         Console.WriteLine("Number of \'" + x + "\' present in the array: ");
         Console.WriteLine(nums.Count(n => n == x));
+    }
+
+    /**
+     * Compute sum of all the elements of an array of integers
+     * 
+     * MAIN TAKEAWAY:
+     * - Interpolation of array values by converting array values into string
+     * - string.Join method can be used to join array elements in a string
+     * 
+    **/
+    public static void Basic47()
+    {
+        int[] nums = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1 };
+        Console.WriteLine("\nArray1: [{0}]", string.Join(", ", nums));
+
+        var sum = 0;
+        for(int i = 0; i < nums.Length;i++)
+        {
+            sum += nums[i];
+        }
+        Console.WriteLine("Sum: " + sum);
     }
 
     /**

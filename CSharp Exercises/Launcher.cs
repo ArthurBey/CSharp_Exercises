@@ -8,6 +8,6 @@ public class Launcher
 {
     public static void Main()
     {
-        BasicExercises.Basic45();
+        BasicExercises.Basic47();
     }
 }
