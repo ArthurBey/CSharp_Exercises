@@ -3,23 +3,13 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-/**
-Write a C# program to find the largest and lowest values from three integer values.
 
-Test Data:
-Input first integer:
-15
-Input second integer:
-25
-Input third integer:
-30
-Sample Output
-Largest of three: 30
-Lowest of three: 15
-**/
-public class BasicExercises39
+public class BasicExercises
 {
-    public static void Main()
+    /**
+    Write a C# program to find the largest and lowest values from three integer values.
+    **/
+    public static void Basic39()
     {
         Console.WriteLine("\nInput first integer:");
         int x = Convert.ToInt32(Console.ReadLine());
