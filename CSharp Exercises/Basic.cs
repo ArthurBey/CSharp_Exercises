@@ -188,12 +188,38 @@ public class BasicExercises
         Console.WriteLine(nums1[0].Equals(nums2[0]) || nums1[nums1.Length - 1].Equals(nums2[nums2.Length - 1]));
     }
 
-     /**
-     * 
-     * 
-     * MAIN TAKEAWAY:
-     * 
-    **/
+    /**
+    * Check if an array contains an odd number
+    * 
+    * MAIN TAKEAWAY:
+    * Just look
+    * 
+   **/
+    public static void Basic53()
+    {
+        int[] nums = { 2, 4, 5, 6, 8 };
+        Console.WriteLine("\nOriginal array: [{0}]", string.Join(", ", nums));
+        Console.WriteLine("\nArray contains an odd number? Result: " + OddNumberCheck(nums));
+        
+    }
+    public static bool OddNumberCheck(int[] num)
+    {
+        foreach(var n in num)
+        {
+            if (n % 2 != 0)
+            {
+                return true;
+            }
+        }
+        return false; // one return needs to be outside the foreach.
+    }
+
+    /**
+    * Create an array containing the middle elements of three arrays of integers
+    * 
+    * MAIN TAKEAWAY:
+    * 
+   **/
     public static void BasicXX()
     {
 
