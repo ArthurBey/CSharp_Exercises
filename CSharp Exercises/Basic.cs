@@ -42,11 +42,11 @@ public class BasicExercises
         Console.WriteLine("\nWrite second number to compare: ");
         int y = Convert.ToInt32(Console.ReadLine());
 
-        int comparisonX = Math.Abs(x - REFERENCE_VALUE); // ABS(2 - 20) = 18 
-        int comparisonY = Math.Abs(y - REFERENCE_VALUE); // ABS(18 - 20) = 2
+        int magnitudeX = Math.Abs(x - REFERENCE_VALUE); // ABS(2 - 20) = 18 
+        int magnitudeY = Math.Abs(y - REFERENCE_VALUE); // ABS(18 - 20) = 2
 
         Console.WriteLine("Closest to " + REFERENCE_VALUE + " is :");
-        Console.WriteLine(comparisonX == comparisonY ? 0 : comparisonX > comparisonY ? y : x);
+        Console.WriteLine(magnitudeX == magnitudeY ? 0 : magnitudeX > magnitudeY ? y : x);
     }
 
     /**
@@ -93,6 +93,8 @@ public class BasicExercises
      * MAIN TAKEAWAY:
      * - Checking for odd number with statement"i % 2 == 0"
      * - you can initialize a string to "" with string.Empty
+     * 
+     * 
     **/
     public static void Basic44()
     {
@@ -102,6 +104,7 @@ public class BasicExercises
         /** initializing it with an empty string
          * done as a starting point when you intend to build or concatenate strings in a loop or over multiple operations. 
          */
+
         var result = string.Empty;
 
         for (var i = 0; i < str.Length; i++)
@@ -111,7 +114,6 @@ public class BasicExercises
                 result += str.Substring(i, 1);
             }
         }
-
         Console.WriteLine(result);
 
     }
@@ -152,6 +154,20 @@ public class BasicExercises
             sum += nums[i];
         }
         Console.WriteLine("Sum: " + sum);
+    }
+
+    /**
+     * Check if the first element and the last element are equal of an array of integers. The array length is 1 or more.
+     * 
+     * MAIN TAKEAWAY:
+     * array.Length -1 => last element
+     * "Equals" method equivalent to == 
+     * 
+    **/
+    public static void Basic48()
+    {
+        int[] nums = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1};
+        Console.WriteLine((nums.Length >= 1) && (nums[0].Equals(nums[nums.Length - 1])));
     }
 
     /**
