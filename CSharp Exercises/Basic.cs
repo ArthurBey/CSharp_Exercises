@@ -269,7 +269,7 @@ public class BasicExercises
     * MAIN TAKEAWAY: My personal attempt
     * 
    **/
-    public static void Basic56a()
+    public static void Basic560()
     {
         Console.WriteLine("Palindrome checker: \n");
         char[] strInput = Console.ReadLine().ToCharArray(); 
@@ -296,7 +296,7 @@ public class BasicExercises
     * string method Replace(" ", "");
     * 
    **/
-    public static void Basic56b()
+    public static void Basic561()
     {
         Console.WriteLine("Palindrome checker: \n");
         string input = Console.ReadLine();
@@ -330,6 +330,30 @@ public class BasicExercises
             right--;
         }
         return true;
+    }
+
+    /**
+    * Find the pair of adjacent elements that has the highest product of an given array of integers
+    * 
+    * MAIN TAKEAWAY:
+    * AS LONG AS THE LENGTH: "<=" smaller or equal NOT ONLY "<" smaller !!! See error bellow
+    * 
+   **/
+    public static void Basic57()
+    {
+        Console.WriteLine(AdjacentElementsProduct(new int[] { 1, -3, 4, -5, 1 }));
+        Console.WriteLine(AdjacentElementsProduct(new int[] { 1, 3, 4, 5, 2 }));
+        Console.WriteLine(AdjacentElementsProduct(new int[] { 1, 3, -4, 5, 2 }));
+    }
+    public static int AdjacentElementsProduct(int[] intArray)
+    {
+        int max = intArray[0] * intArray[1];
+        for (int i = 1; i <= intArray.Length - 2; i++) // my mistake was: (int i = 1; i < intArray.Length - 2; i++) then it ignored last iteration... false result
+        {
+            Console.WriteLine("=> " + intArray[i] * intArray[i + 1] + "\n");
+            max = Math.Max(max, (intArray[i] * intArray[i + 1]));
+        }
+        return max;
     }
 
     /**
