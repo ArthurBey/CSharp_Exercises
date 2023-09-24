@@ -2,11 +2,15 @@
 
 
 using System;
+using System.Collections.Immutable;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Metrics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
-public class BasicExercises
+public class BasicExercises 
 {
     /**
     Write a C# program to find the largest and lowest values from three integer values.
@@ -31,6 +35,7 @@ public class BasicExercises
      * Check the nearest value of 20 of two given integers and return 0 if two numbers are same
      * 
      * Nested ternary!
+     * Math.Abs() to return absolute value
      * 
     **/
     public static void Basic40()
@@ -183,6 +188,7 @@ public class BasicExercises
     **/
     public static void Basic49()
     {
+ 
         int[] nums1 = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1 };
         int[] nums2 = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 5 };
 
@@ -190,13 +196,15 @@ public class BasicExercises
         Console.WriteLine("\nArray2: [{0}]", string.Join(',', nums2));
 
         Console.WriteLine(nums1[0].Equals(nums2[0]) || nums1[nums1.Length - 1].Equals(nums2[nums2.Length - 1]));
+
     }
 
     /**
     * Check if an array contains an odd number
     * 
     * MAIN TAKEAWAY:
-    * Just look
+    * {0} is called 'composite formating' and is based on placeholders this is NOT interpolation ($"...{variable}")
+    * MULTIPLE TIMES made the mistake to put the 'return false' inside the foreach after if...
     * 
    **/
     public static void Basic53()
@@ -223,6 +231,7 @@ public class BasicExercises
     * 
     * 
     * MAIN TAKEAWAY:
+    * This is what INTERPOLATION looks like, previous exemple was called 'composite formatting'
     * 
    **/
     public static void Basic54()
@@ -236,7 +245,7 @@ public class BasicExercises
     }
 
     /**
-    * Find the pair of adjacent elements that has 'the largest product of a given array' (wtf?) which is equal to a given value
+    * Find the pair of adjacent elements that has 'the largest product of a given array' which is equal to a given value
     * 
     * MAIN TAKEAWAY:
     * 
@@ -251,9 +260,9 @@ public class BasicExercises
         int arrayIndex = 0;
         int product = inputArray[arrayIndex] * inputArray[arrayIndex + 1];
         
-        for (arrayIndex = 1; arrayIndex < inputArray.Length - 1 /** We did one iteration **/; arrayIndex++)
+        for (int i = 1; i < inputArray.Length - 1 /** We did one iteration **/; i++)
         {
-            int currentProduct = inputArray[arrayIndex] * inputArray[arrayIndex + 1];
+            int currentProduct = inputArray[i] * inputArray[i + 1];
             if (currentProduct > product)
             {
                 product = currentProduct;
@@ -357,12 +366,106 @@ public class BasicExercises
     }
 
     /**
-    * 
+    * Write a C# program that accepts a list of integers and checks how many integers are needed to complete the range. 
+    * Sample Example [1, 3, 4, 7, 9], between 1-9 -> 2, 5, 6, 8 are not present in the list. So output will be 4.
     * 
     * MAIN TAKEAWAY:
+    * Array.Sort(nameOfArray) => It's a *STATIC* method of the class Array
+    * 
     * 
    **/
-    public static void BasicXX()
+    public static void Basic58()
+    {
+        Console.WriteLine(ConsecutiveArray(new int[] { 1, 3, 5, 6, 9 }));
+        Console.WriteLine(ConsecutiveArray(new int[] { 0, 10 }));
+    }
+    public static int ConsecutiveArray(int[] array)
+    {
+        Array.Sort(array); // By default sorts ascending. It's a STATIC method! 
+        int counter = 0;
+        for (int i = 0; i < array.Length - 1; i++) 
+        {
+            counter += array[i + 1] - array[i] - 1; 
+        }
+        return counter;
+    }
+
+    /**
+    * Bonus example: 
+    *  Imagine you need to manage inventory and process customer orders. Each product in your inventory has a unique product ID, and customer orders are associated with these IDs. 
+    *  Your goal is to ensure that all products in your inventory have a corresponding order and vice versa. 
+    *  Any missing product IDs or order numbers could lead to issues such as unfulfilled orders or inventory discrepancies.
+    * 
+   **/
+    public static List<int> FindMissingProductIDs(List<int> inventory, List<int> orders)
+    {
+        // Create a list to store missing product IDs
+        List<int> missingProductIDs = new List<int>();
+
+        // Sort the inventory and orders lists
+        inventory.Sort();
+        orders.Sort();
+
+        // Initialize index variables for both lists
+        int inventoryIndex = 0;
+        int orderIndex = 0;
+
+        // Compare product IDs in the inventory and orders
+        while (inventoryIndex < inventory.Count && orderIndex < orders.Count)
+        {
+            int inventoryID = inventory[inventoryIndex];
+            int orderID = orders[orderIndex];
+
+            if (inventoryID == orderID)
+            {
+                // Product ID is found in both inventory and orders
+                inventoryIndex++;
+                orderIndex++;
+            }
+            else if (inventoryID < orderID)
+            {
+                // Product ID is missing in orders
+                missingProductIDs.Add(inventoryID);
+                inventoryIndex++;
+            }
+            else
+            {
+                // Product ID is missing in inventory
+                orderIndex++;
+            }
+        }
+
+        // Add any remaining missing product IDs from the inventory
+        while (inventoryIndex < inventory.Count)
+        {
+            missingProductIDs.Add(inventory[inventoryIndex]);
+            inventoryIndex++;
+        }
+
+        return missingProductIDs;
+    }
+
+    public static void Basic588()
+    {
+        List<int> inventory = new List<int> { 101, 102, 104, 105 };
+        List<int> orders = new List<int> { 101, 103, 105 };
+
+        List<int> missingProductIDs = FindMissingProductIDs(inventory, orders);
+
+        Console.WriteLine("Missing Product IDs: ");
+        foreach (int productID in missingProductIDs)
+        {
+            Console.WriteLine(productID);
+        }
+    }
+
+/**
+* 
+* 
+* MAIN TAKEAWAY:
+* 
+**/
+public static void BasicXX()
     {
 
     }
