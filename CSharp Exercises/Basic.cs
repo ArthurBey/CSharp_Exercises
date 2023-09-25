@@ -1,4 +1,4 @@
-﻿
+﻿ 
 
 
 using System;
@@ -452,20 +452,136 @@ public class BasicExercises
 
         List<int> missingProductIDs = FindMissingProductIDs(inventory, orders);
 
-        Console.WriteLine("Missing Product IDs: ");
+        Console.WriteLine("Missing Product IDs in Orders: ");
         foreach (int productID in missingProductIDs)
         {
             Console.WriteLine(productID);
         }
     }
 
-/**
-* 
-* 
-* MAIN TAKEAWAY:
-* 
-**/
-public static void BasicXX()
+    /**
+    * Check whether it is possible to create a strictly increasing sequence from a given sequence of integers as an array
+    * 
+    * MAIN TAKEAWAY: My attempt.
+    * 
+    **/
+    public static bool IsIncreasingSequence(int[] array)
+    {
+        Array.Sort(array);
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            int diff = array[i + 1] - array[i];
+
+            if(diff <= 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void Basic59()
+    {
+        Console.WriteLine(IsIncreasingSequence(new int[] { 2, 3, 5, 2}));
+        Console.WriteLine(IsIncreasingSequence(new int[] { 7, 3, 5, 12}));
+    }
+
+    /**
+    * sum the matrix elements column-wise until a non-positive value is encountered
+    * Sample Example:
+        matrix = [[0, 2, 3, 2],
+                  [0, 6, 0, 1],
+                  [4, 0, 3, 0]]
+    Eligible integers which will be participated to calculate the sum -
+       matrix = [[X, 2, 3, 2],
+                 [X, 6, X, 1],
+                 [X, X, X, X]]
+    Therefore sum will be: 2 + 3 + 2 + 6 + 1 = 14
+    * 
+    * My FAILED attempt
+    * 
+    **/
+    public static int SumMatrixElements(int[][] matrix)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            for (int j = 0; j < matrix[i].Length; j++)
+            {
+                if (matrix[i][j] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum += matrix[i][j];
+                }
+            }
+        }
+        return sum;
+    }
+    public static void Basic60()
+    {
+        Console.WriteLine(SumMatrixElements(
+            new int[][]
+            {
+                new int[] { 0, 2, 3, 2},
+                new int[] { 0, 6, 0, 1},
+                new int[] { 4, 0, 3, 0}
+            }));
+        Console.WriteLine(SumMatrixElements(
+            new int[][]
+            {
+                new int[] { 1, 2, 1, 0},
+                new int[] { 0, 5, 0, 0},
+                new int[] { 1, 1, 3, 10 }
+            }));
+    }
+
+    /**
+     * Correction
+     * MAIN TAKEAWAY: Don't hesistate to add more conditions inside a for loop!
+     * iterating [i][j] => ROW-WISE
+     * iterating [j][i] => COLUMN-WISE 
+     */
+    public static int SumMatrixElements2(int[][] matrix)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < matrix[0].Length; i++) // We are assuming that all sub-arrays are the same length
+        {
+            for (int j = 0; j < matrix.Length && matrix[j][i] > 0; j++) // && condition inside the for loop
+            {
+                sum += matrix[j][i]; // This way we are doing our sum column-wise
+            }
+        }
+        return sum;
+    }
+    public static void Basic600()
+    {
+        Console.WriteLine(SumMatrixElements2(
+            new int[][]
+            {
+                new int[] { 0, 2, 3, 2},
+                new int[] { 0, 6, 0, 1},
+                new int[] { 4, 0, 3, 0}
+            }));
+        Console.WriteLine(SumMatrixElements2(
+            new int[][]
+            {
+                new int[] { 1, 2, 1, 0},
+                new int[] { 0, 5, 0, 0},
+                new int[] { 1, 1, 3, 10 }
+            }));
+    }
+
+    /**
+    * 
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static void BasicXX()
     {
 
     }
