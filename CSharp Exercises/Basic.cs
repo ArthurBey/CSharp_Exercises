@@ -506,15 +506,15 @@ public class BasicExercises
 
         for (int i = 0; i < matrix.Length; i++)
         {
-            for (int j = 0; j < matrix[i].Length; j++)
+            for (int j = 0; j < matrix[i].Length; j++) // need to loop vertically so [j][i]
             {
-                if (matrix[i][j] == 0)
+                if (matrix[i][j] == 0) // Not needed, you can add this inside for condition
                 {
                     continue;
                 }
                 else
                 {
-                    sum += matrix[i][j];
+                    sum += matrix[i][j]; 
                 }
             }
         }
@@ -578,6 +578,7 @@ public class BasicExercises
     }
 
     /**
+<<<<<<< HEAD
     * Write a C# program to reverse the strings contained in each pair of matching parentheses in a given string. It should also remove the parentheses from the given string.
     * Input: "ab(cd(ef)gh)ijv"
     * Output: "abhgefdcij"
@@ -618,6 +619,30 @@ public class BasicExercises
         Console.WriteLine(ReverseRemoveParentheses("p(rq)st")); // line 1*
         Console.WriteLine(ReverseRemoveParentheses("(p(rq)st)"));
         Console.WriteLine(ReverseRemoveParentheses("ab(cd(ef)gh)ij"));
+=======
+    * Sort the integers in ascending order without moving the number -5
+    * 
+    * MAIN TAKEAWAY:
+    * Where() / OrderBy() / ToArray() are exemples of LINQ methods (Language integrated Query) in C" to perform various ops on collection like arrays, lists, or other enumerable data sources.
+    * 
+    **/
+    public static int[] SortNumbers(int[] array, int exception)
+    {
+        //This line filters out elements equal to -5 from the original array, sorts the remaining
+        // elements in ascending order, and stores the result in the num array.
+        int[] num = array.Where(x => x != -5).OrderBy(x => x).ToArray();
+        int ctr = 0;
+
+        return array.Select(x => x >= 0 ? num[ctr++] : -5).ToArray();
+    }
+    public static void Basic61()
+    {
+        int[] sortedArray = SortNumbers(new int[] { -5, 236, 120, 70, -5, -5, 698, 280 }, -5);
+        foreach(int item in sortedArray)
+        {
+            Console.WriteLine(item.ToString()); 
+        }
+>>>>>>> 5406e03146eb4d788f24cd11bd68e178bca64a27
     }
 
     /**
