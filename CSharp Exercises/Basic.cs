@@ -539,6 +539,8 @@ public class BasicExercises
     }
 
     /**
+     * Write a C# program to calculate the sum of all integers in a rectangular matrix. However, exclude those integers located below an integer of value 0.
+     * 
      * Correction
      * MAIN TAKEAWAY: Don't hesistate to add more conditions inside a for loop!
      * iterating [i][j] => ROW-WISE
@@ -550,7 +552,7 @@ public class BasicExercises
 
         for (int i = 0; i < matrix[0].Length; i++) // We are assuming that all sub-arrays are the same length
         {
-            for (int j = 0; j < matrix.Length && matrix[j][i] > 0; j++) // && condition inside the for loop
+            for (int j = 0; j < matrix.Length && matrix[j][i] > 0; j++) // && condition inside the for loop | matrix.Length will return '3' as there are 3 sub arrays
             {
                 sum += matrix[j][i]; // This way we are doing our sum column-wise
             }
@@ -573,6 +575,49 @@ public class BasicExercises
                 new int[] { 0, 5, 0, 0},
                 new int[] { 1, 1, 3, 10 }
             }));
+    }
+
+    /**
+    * Write a C# program to reverse the strings contained in each pair of matching parentheses in a given string. It should also remove the parentheses from the given string.
+    * Input: "ab(cd(ef)gh)ijv"
+    * Output: "abhgefdcij"
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static string ReverseRemoveParentheses(string str)
+    {
+        // "left index"
+        int lid = str.LastIndexOf('('); // will be 1 for first line*, 2 for second...
+
+        if (lid == -1) // essentialy if it doesn't find an opening parenthesis
+        {
+            return str;
+        }
+        else
+        {
+            int rid = str.IndexOf(')', lid); // second arg: start index
+
+            // recursively call itself to process substring before & after the parentheses + reverse substring between parentheses
+            return ReverseRemoveParentheses(
+                str.Substring(0, lid)
+                + new string(str.Substring(lid + 1, rid - lid - 1).Reverse().ToArray())
+                + str.Substring(rid + 1)
+            );
+
+            /**
+             * ToArray(): The ToArray() method is used to convert the reversed IEnumerable<char> ( outputed bu Reverse() )back into an array of characters(char[]).
+             * This step is necessary because the string constructor expects an array of characters when creating a new string from a collection of characters.
+             * 
+             */
+        }
+        
+    }
+    public static void Basic62()
+    {
+        Console.WriteLine(ReverseRemoveParentheses("p(rq)st")); // line 1*
+        Console.WriteLine(ReverseRemoveParentheses("(p(rq)st)"));
+        Console.WriteLine(ReverseRemoveParentheses("ab(cd(ef)gh)ij"));
     }
 
     /**
