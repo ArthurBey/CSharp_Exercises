@@ -1,16 +1,14 @@
-﻿ 
-
-
-using System;
+﻿using System;
 using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Metrics;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 
-public class BasicExercises 
+public class BasicExercises
 {
     /**
     Write a C# program to find the largest and lowest values from three integer values.
@@ -115,14 +113,14 @@ public class BasicExercises
 
         var result = string.Empty;
 
-        for(int i = 0; i < str.Length; i++) 
-        { 
-            if(i % 2 == 0)
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (i % 2 == 0)
             {
                 str += str.Substring(i, 1);
             }
         }
-        
+
         Console.WriteLine(result);
 
     }
@@ -158,7 +156,7 @@ public class BasicExercises
         Console.WriteLine("\nArray1: [{0}]", string.Join(", ", nums));
 
         var sum = 0;
-        for(int i = 0; i < nums.Length;i++)
+        for (int i = 0; i < nums.Length; i++)
         {
             sum += nums[i];
         }
@@ -175,9 +173,9 @@ public class BasicExercises
     **/
     public static void Basic48()
     {
-        int[] nums = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1};
-        Console.WriteLine(nums.Length >= 1 && (nums[0].Equals(nums[nums.Length -1])));
-    }  
+        int[] nums = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1 };
+        Console.WriteLine(nums.Length >= 1 && (nums[0].Equals(nums[nums.Length - 1])));
+    }
 
     /**
      * Check if the first or the last element of the two arrays are equal
@@ -188,7 +186,7 @@ public class BasicExercises
     **/
     public static void Basic49()
     {
- 
+
         int[] nums1 = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 1 };
         int[] nums2 = { 1, 2, 2, 3, 3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 5 };
 
@@ -212,13 +210,13 @@ public class BasicExercises
         int[] nums = { 2, 4, 5, 6, 8 };
         Console.WriteLine("\nOriginal array: [{0}]", string.Join(", ", nums));
         Console.WriteLine("\nArray contains an odd number? Result: " + OddNumberCheck(nums));
-        
+
     }
     public static bool OddNumberCheck(int[] nums)
     {
-        foreach(var n in nums)
+        foreach (var n in nums)
         {
-            if(n % 2 != 0)
+            if (n % 2 != 0)
             {
                 return true;
             }
@@ -259,7 +257,7 @@ public class BasicExercises
     {
         int arrayIndex = 0;
         int product = inputArray[arrayIndex] * inputArray[arrayIndex + 1];
-        
+
         for (int i = 1; i < inputArray.Length - 1 /** We did one iteration **/; i++)
         {
             int currentProduct = inputArray[i] * inputArray[i + 1];
@@ -281,8 +279,8 @@ public class BasicExercises
     public static void Basic560()
     {
         Console.WriteLine("Palindrome checker: \n");
-        char[] strInput = Console.ReadLine().ToCharArray(); 
-       
+        char[] strInput = Console.ReadLine().ToCharArray();
+
         Console.WriteLine(IsPalindrome(strInput));
     }
     public static bool IsPalindrome(char[] strInput)
@@ -312,7 +310,7 @@ public class BasicExercises
 
         bool isPalindrome = IsPalindrome(input);
 
-        if(isPalindrome) 
+        if (isPalindrome)
         {
             Console.WriteLine("Is palindrome");
         }
@@ -329,7 +327,7 @@ public class BasicExercises
         int left = 0;
         int right = input.Length - 1; // -1 because used for index
 
-        while(left < right)
+        while (left < right)
         {
             if (input[left] != input[right])
             {
@@ -383,9 +381,9 @@ public class BasicExercises
     {
         Array.Sort(array); // By default sorts ascending. It's a STATIC method! 
         int counter = 0;
-        for (int i = 0; i < array.Length - 1; i++) 
+        for (int i = 0; i < array.Length - 1; i++)
         {
-            counter += array[i + 1] - array[i] - 1; 
+            counter += array[i + 1] - array[i] - 1;
         }
         return counter;
     }
@@ -472,7 +470,7 @@ public class BasicExercises
         {
             int diff = array[i + 1] - array[i];
 
-            if(diff <= 0)
+            if (diff <= 0)
             {
                 return false;
             }
@@ -481,8 +479,8 @@ public class BasicExercises
     }
     public static void Basic59()
     {
-        Console.WriteLine(IsIncreasingSequence(new int[] { 2, 3, 5, 2}));
-        Console.WriteLine(IsIncreasingSequence(new int[] { 7, 3, 5, 12}));
+        Console.WriteLine(IsIncreasingSequence(new int[] { 2, 3, 5, 2 }));
+        Console.WriteLine(IsIncreasingSequence(new int[] { 7, 3, 5, 12 }));
     }
 
     /**
@@ -506,15 +504,15 @@ public class BasicExercises
 
         for (int i = 0; i < matrix.Length; i++)
         {
-            for (int j = 0; j < matrix[i].Length; j++) // need to loop vertically so [j][i]
+            for (int j = 0; j < matrix[i].Length; j++)
             {
-                if (matrix[i][j] == 0) // Not needed, you can add this inside for condition
+                if (matrix[i][j] == 0)
                 {
                     continue;
                 }
                 else
                 {
-                    sum += matrix[i][j]; 
+                    sum += matrix[i][j];
                 }
             }
         }
@@ -545,6 +543,7 @@ public class BasicExercises
      * MAIN TAKEAWAY: Don't hesistate to add more conditions inside a for loop!
      * iterating [i][j] => ROW-WISE
      * iterating [j][i] => COLUMN-WISE 
+     * 2Darray.Length => returns nb of sub arrays
      */
     public static int SumMatrixElements2(int[][] matrix)
     {
@@ -554,6 +553,7 @@ public class BasicExercises
         {
             for (int j = 0; j < matrix.Length && matrix[j][i] > 0; j++) // && condition inside the for loop | matrix.Length will return '3' as there are 3 sub arrays
             {
+                Console.WriteLine(matrix.Length);
                 sum += matrix[j][i]; // This way we are doing our sum column-wise
             }
         }
@@ -578,12 +578,11 @@ public class BasicExercises
     }
 
     /**
-<<<<<<< HEAD
     * Write a C# program to reverse the strings contained in each pair of matching parentheses in a given string. It should also remove the parentheses from the given string.
     * Input: "ab(cd(ef)gh)ijv"
     * Output: "abhgefdcij"
     * 
-    * MAIN TAKEAWAY:
+    * MAIN TAKEAWAY: Example of a RECURSIVE FUNCTION - beware of stack overflow! (recursion depth)
     * 
     **/
     public static string ReverseRemoveParentheses(string str)
@@ -612,37 +611,137 @@ public class BasicExercises
              * 
              */
         }
-        
+
     }
     public static void Basic62()
     {
         Console.WriteLine(ReverseRemoveParentheses("p(rq)st")); // line 1*
         Console.WriteLine(ReverseRemoveParentheses("(p(rq)st)"));
         Console.WriteLine(ReverseRemoveParentheses("ab(cd(ef)gh)ij"));
-=======
-    * Sort the integers in ascending order without moving the number -5
+    }
+
+    /**
+    * get the file name (including extension) from a given path
     * 
     * MAIN TAKEAWAY:
-    * Where() / OrderBy() / ToArray() are exemples of LINQ methods (Language integrated Query) in C" to perform various ops on collection like arrays, lists, or other enumerable data sources.
+    * Split() string method returns an array & Last returns last element of the array as a string
     * 
     **/
-    public static int[] SortNumbers(int[] array, int exception)
+    public static string GetFileName(string filePath)
     {
-        //This line filters out elements equal to -5 from the original array, sorts the remaining
-        // elements in ascending order, and stores the result in the num array.
-        int[] num = array.Where(x => x != -5).OrderBy(x => x).ToArray();
-        int ctr = 0;
+        string fileName = filePath.Split('/').Last();
 
-        return array.Select(x => x >= 0 ? num[ctr++] : -5).ToArray();
+        return fileName;
     }
-    public static void Basic61()
+    public static void Basic64()
     {
-        int[] sortedArray = SortNumbers(new int[] { -5, 236, 120, 70, -5, -5, 698, 280 }, -5);
-        foreach(int item in sortedArray)
-        {
-            Console.WriteLine(item.ToString()); 
-        }
->>>>>>> 5406e03146eb4d788f24cd11bd68e178bca64a27
+        string filePath;
+        filePath = "c:/csharp/ex/test.cpp";
+        Console.WriteLine(GetFileName(filePath));
+        filePath = "c:/movies/abc.mp4";
+        Console.WriteLine(GetFileName(filePath));
+        filePath = "test.txt";
+        Console.WriteLine(GetFileName(filePath));
+    }
+
+    /**
+    * Write a C# Sharp program to multiply all elements of a given array of numbers by array length.
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static int[] multiplyByArrayLength(int[] nums)
+    {
+        var arrayLength = nums.Length; 
+        // LINQ method + Lambda expression
+        return nums.Select(el => el * arrayLength).ToArray(); // ToArray() essential as Select returns an IEnumerable sequence
+    }
+    public static void Basic65()
+    {
+        int[] nums = { 1, 3, 5, 7, 9 };
+        int[] multipliedNums = multiplyByArrayLength(nums);
+        Array.ForEach(multipliedNums, Console.WriteLine);
+    }
+
+    /**
+    * find the minimum value from two numbers ('6', '7'.. not english words...) given to you, represented as a string
+    * 
+    * MAIN TAKEAWAY:
+    * Int32.Parse() is a method in C# that belongs to the System namespace and is used to convert a string representation of an integer (e.g., "123") into an actual int (Int32) data type.
+    * 
+    **/
+    public static string compareString(string str1, string str2)
+    {
+        return Int32.Parse(str1) > Int32.Parse(str2) ? str2 : str1;
+    }
+    public static void Basic66()
+    {
+        Console.WriteLine(compareString("12", "43"));
+    }
+
+    /**
+    * create a coded string from a given string, using a specified formula.
+    * Replace all 'P' with '9', 'T' with '0', 'S' with '1', 'H' with '6' and 'A' with '8'.
+    * 
+    * MAIN TAKEAWAY: string method .Replace("oldValue", "newValue")
+    * 
+    **/
+    public static void Basic67()
+    {
+        string str = "JAVASCRIPT & PHP";
+        Console.WriteLine(str.Replace("P", "9").Replace("T", "0").Replace("S", "1").Replace("H", "6").Replace("A", "8"));
+    }
+
+    /**
+    * check if a given string contains only lowercase or uppercase characters.
+    * 
+    * MAIN TAKEAWAY: string method .ToLower() and .ToUpper()
+    * 
+    **/
+    public static bool isOnlyUpperOrLower(string str)
+    {
+        return str == str.ToUpper() ? true : str == str.ToLower() ? true : false;
+    }
+    public static void Basic69()
+    {
+        Console.WriteLine(isOnlyUpperOrLower("PHP"));
+        Console.WriteLine(isOnlyUpperOrLower("python"));
+        Console.WriteLine(isOnlyUpperOrLower("JavaScript"));
+    }
+
+    /**
+    * Write a C# Sharp program to remove the first and last elements from a given string.
+    * 
+    * MAIN TAKEAWAY: string method .Substring(startIndex, length!!!)
+    * 
+    **/
+    public static string removeFirstLastLetter(string str)
+    {
+        return str.Length > 2 ? str.Substring(1, str.Length - 2) : str;
+    }
+    public static void Basic70()
+    {
+        Console.WriteLine("Original string: PHP");
+        Console.WriteLine("After removing first and last elements: " + removeFirstLastLetter("PHP"));
+    }
+
+    /**
+    * check whether the average value of the elements of a given array of numbers is a whole number or not
+    * 
+    * MAIN TAKEAWAY:
+    * int % 1 = 0 is true when int is a WHOLE number
+    * 
+    **/
+    public static bool isWholeAverage(int[] nums)
+    {
+        return nums.Average() % 1 == 0; // no need for ternary, it will already return either true or false
+    }
+    public static void Basic72()
+    {
+        int[] nums = { 1, 2, 3, 5, 4, 2, 3, 4 };
+        Console.WriteLine("Check the average value of the said array is a whole number or not: " + test(nums));
+        int[] nums1 = { 2, 4, 2, 6, 4, 8 };
+        Console.WriteLine("Check the average value of the said array is a whole number or not: " + test(nums1));
     }
 
     /**
@@ -651,6 +750,10 @@ public class BasicExercises
     * MAIN TAKEAWAY:
     * 
     **/
+    public static void functionXX()
+    {
+
+    }
     public static void BasicXX()
     {
 
