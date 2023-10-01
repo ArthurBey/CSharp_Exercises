@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Metrics;
+using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -684,6 +685,7 @@ public class BasicExercises
     * Replace all 'P' with '9', 'T' with '0', 'S' with '1', 'H' with '6' and 'A' with '8'.
     * 
     * MAIN TAKEAWAY: string method .Replace("oldValue", "newValue")
+    * In PHP, it's the standalone function str_replace(strold, strnew, $variable)
     * 
     **/
     public static void Basic67()
@@ -739,9 +741,118 @@ public class BasicExercises
     public static void Basic72()
     {
         int[] nums = { 1, 2, 3, 5, 4, 2, 3, 4 };
-        Console.WriteLine("Check the average value of the said array is a whole number or not: " + test(nums));
+        Console.WriteLine("Check the average value of the said array is a whole number or not: " + isWholeAverage(nums));
         int[] nums1 = { 2, 4, 2, 6, 4, 8 };
-        Console.WriteLine("Check the average value of the said array is a whole number or not: " + test(nums1));
+        Console.WriteLine("Check the average value of the said array is a whole number or not: " + isWholeAverage(nums1));  
+    }
+
+    /**
+    * convert the letters of a given string (same case-upper/lower) into alphabetical order.
+    * 
+    * MAIN TAKEAWAY:
+    * new string(string[]) to create a new string object
+    * str.OrderBy(x => x) : alphabetically using link expression
+    * 
+    **/
+    public static string getAlphabeticalOrder(string str)
+    {
+        return new string(str.OrderBy(x => x).ToArray()); // ToArray() because new string() expects an array to build a new string object
+    }
+    public static void Basic73()
+    {
+        Console.WriteLine("Original string: javascript");
+        Console.WriteLine("Convert the letters of the said string into alphabetical order: " + getAlphabeticalOrder("javascript"));
+    }
+
+    /**
+    * check the length of a given string is odd or even. Return 'Odd length' if the string length is odd otherwise 'Even length'
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static string isLengthOddOrEven(string str)
+    {
+        if (str.Length % 2 == 0)
+        {
+            return "Even";
+        }
+        else
+        {
+            return "Odd";
+        }
+    }
+    public static void Basic74()
+    {
+        Console.WriteLine(isLengthOddOrEven("javascript"));
+        Console.WriteLine(isLengthOddOrEven("Kek"));
+    }
+
+    /**
+    * Write a program that takes a positive number and returns the nth odd number.
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static int getNthOdd(int n)
+    {
+        return n * 2 - 1;
+    }
+    public static void Basic75()
+    {
+        Console.WriteLine("1st odd number: " + getNthOdd(1));
+        Console.WriteLine("2nd odd number: " + getNthOdd(2));
+    }
+
+    /**
+    * return the sum of squares of elements in a given array of integers.
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static int sumOfSquareElements(int[] array)
+    {
+        return array.Sum(x => x * x);
+    }
+    public static void Basic78()
+    {
+        int[] nums = { 1, 2, 3 };
+        Console.WriteLine("Sum of squares of elements of the said array: " + sumOfSquareElements(nums));
+    }
+
+    /**
+    * Write a C# program that finds the longest common prefix from an array of strings.
+    * ({ "Padas", "Packed", "Pace", "Pacha" }) -> "Pa"
+    * 
+    * MAIN TAKEAWAY:
+    * 
+    **/
+    public static string findLongestCommonPrefix(string[] strArray)
+    {
+        if(strArray.Length == 0)
+        {
+            return "";
+        }
+
+        string result = strArray[0];
+        int i = result.Length;
+        foreach(string word in strArray)
+        {
+            int j = 0;
+            foreach(char c in word)
+            {
+                if (j >= i || result[j] != c) // left check necessary to make sure right check doesn't go over bounds
+                    break; // will break the inner foreach statement and go to next word
+                j += 1;
+            }
+            i = Math.Min(i, j); // It guarantees that i represents the minimum length of the common prefix **ACROSS THE ENTIRE ARRAY**.
+        }
+        return result.Substring(0, i);
+    }
+    public static void Basic94()
+    {
+        string[] arrayString1 = { "Padas", "Packed", "Pace", "Pacha" };
+        Console.WriteLine("Content: " + $"{string.Join(", ", arrayString1)}");
+        Console.WriteLine("Longest common prefix: " + findLongestCommonPrefix(arrayString1));
     }
 
     /**
@@ -750,13 +861,15 @@ public class BasicExercises
     * MAIN TAKEAWAY:
     * 
     **/
-    public static void functionXX()
+    public static void name()
     {
-
+        
     }
     public static void BasicXX()
     {
-
+       
     }
+
+
 
 }
