@@ -7,6 +7,7 @@ using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 public class BasicExercises
@@ -370,6 +371,7 @@ public class BasicExercises
     * 
     * MAIN TAKEAWAY:
     * Array.Sort(nameOfArray) => It's a *STATIC* method of the class Array
+    * Do not forget to sort ascending for this exercise !!!
     * 
     * 
    **/
@@ -854,6 +856,8 @@ public class BasicExercises
         Console.WriteLine("Content: " + $"{string.Join(", ", arrayString1)}");
         Console.WriteLine("Longest common prefix: " + findLongestCommonPrefix(arrayString1));
     }
+
+
 
     /**
     * 
